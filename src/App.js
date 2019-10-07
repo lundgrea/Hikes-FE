@@ -11,9 +11,9 @@ class App extends Component {
   }
   componentDidMount = () => {
     return fetch('http://localhost:3001/api/v1/hikes')
-    .then(res => console.log(res))
-    .then(data => console.log(data))
-    .catch(error => console.log(error))
+    .then(res => res.json())
+    .then(data => this.setState({hikes: data}))
+    .catch(err => this.setState({error: err}))
   }
 
   render() {

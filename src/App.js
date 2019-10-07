@@ -10,16 +10,20 @@ class App extends Component {
     }
   }
   componentDidMount = () => {
-    return fetch('http://localhost:3001/api/v1/hikes')
+    return fetch(process.env.REACT_APP_BACKEND_URL + '/api/v1/hikes')
     .then(res => res.json())
-    .then(data => this.setState({hikes: data}))
+    .then(hikes => this.setState({hikes}))
     .catch(err => this.setState({error: err}))
+  }
+
+  displayHikes = () => {
+    return this.state.hikes.map(hike => hike.name)
   }
 
   render() {
     return (
       <div className="App">
-
+        {this.displayHikes()}
       </div>
     );
   }

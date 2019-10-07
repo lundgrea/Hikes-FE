@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   displayHikes = () => {
-    return this.state.hikes.map(hike => hike.name)
+    return this.state.hikes.map(hike => hike.name);
   }
 
   render() {
